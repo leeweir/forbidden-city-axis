@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#0b0a08" />
+  <meta name="description" content="紫禁城中轴九阙三维漫游。自午门至神武门，沿九百六十米子午线，看明清宫城的门、殿、廊、瓦与四时天光。" />
+  <title>紫禁城 · 中轴九阙 | 3D 宫城漫游</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%239c3b2a'/%3E%3Crect x='8' y='8' width='48' height='48' fill='none' stroke='%23f0e7d5' stroke-width='2'/%3E%3Ctext x='32' y='45' font-size='34' text-anchor='middle' fill='%23f0e7d5' font-family='serif'%3E%E7%B4%AB%3C/text%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="/src/style.css" />
+  <style>html,body{margin:0;background:#0b0a08;color:#efe6d3}</style>
+</head>
+<body>
+  <div id="app">
+    <main class="scene">
+      <canvas id="scene" aria-label="紫禁城中轴九阙三维模型">您的浏览器不支持 Canvas。</canvas>
+    </main>
+
+    <div class="atmosphere" aria-hidden="true"></div>
+    <div class="grain" aria-hidden="true"></div>
+
+    <div class="frame" aria-hidden="true">
+      <i class="frame__corner frame__corner--tl"></i>
+      <i class="frame__corner frame__corner--tr"></i>
+      <i class="frame__corner frame__corner--bl"></i>
+      <i class="frame__corner frame__corner--br"></i>
+    </div>
+
+    <header class="masthead">
+      <div class="masthead__seal" aria-hidden="true"><span>紫禁城</span></div>
+      <div class="masthead__text">
+        <p class="masthead__kicker">明清宫城 · 世界文化遗产</p>
+        <h1 class="masthead__title">紫禁城</h1>
+        <p class="masthead__sub"><span>中轴九阙</span><em>THE FORBIDDEN CITY</em></p>
+      </div>
+    </header>
+
+    <div class="tools" role="toolbar" aria-label="游览工具">
+      <button class="tool" type="button" data-action="tour" aria-pressed="false" aria-label="开始巡游">
+        <span class="tool__glyph" aria-hidden="true">
+          <svg viewBox="0 0 16 16"><path d="M4.2 2.6 12.5 8l-8.3 5.4Z"/></svg>
+        </span>
+        <span class="tool__label">巡游</span>
+      </button>
+      <button class="tool" type="button" data-action="reset" aria-label="回到全景视角">
+        <span class="tool__glyph" aria-hidden="true">
+          <svg viewBox="0 0 16 16"><path d="M13 8a5 5 0 1 1-1.5-3.5M13 2.4V5H10.4"/></svg>
+        </span>
+        <span class="tool__label">复位</span>
+      </button>
+      <button class="tool" type="button" data-action="fullscreen" aria-pressed="false" aria-label="全屏">
+        <span class="tool__glyph" aria-hidden="true">
+          <svg viewBox="0 0 16 16"><path d="M2.6 6V2.6H6M10 2.6h3.4V6M13.4 10v3.4H10M6 13.4H2.6V10"/></svg>
+        </span>
+        <span class="tool__label">全屏</span>
+      </button>
+    </div>
+
+    <nav class="axis" aria-label="中轴九阙">
+      <div class="axis__head">
+        <span class="axis__kicker">AXIS OF NINE</span>
+        <span class="axis__title">中轴九阙</span>
+        <span class="axis__note">由南至北 · 九座门殿</span>
+      </div>
+      <div id="axis-list" class="axis__list"></div>
+    </nav>
+
+    <section id="panel" class="panel" aria-live="polite"></section>
+    <section id="timepiece" class="timepiece" aria-label="天光与十二时辰"></section>
+
+    <div id="hint" class="hint" role="status">拖拽环视 · 滚轮推近 · 点击殿宇细读</div>
+
+    <div id="marker" class="marker">
+      <span class="marker__name"></span>
+      <span class="marker__en"></span>
+    </div>
+
+    <div id="loader" class="loader" role="status" aria-live="polite">
+      <div class="loader__rules" aria-hidden="true"></div>
+      <div class="loader__inner">
+        <div class="loader__seal" aria-hidden="true"><span>紫禁城</span></div>
+        <p class="loader__kicker">THE FORBIDDEN CITY</p>
+        <h2 class="loader__title">中轴九阙</h2>
+        <div class="loader__line" aria-hidden="true"><i></i></div>
+        <p class="loader__status">正在铺陈金砖</p>
+      </div>
+      <div class="loader__foot">
+        <span>明永乐十八年 · 一四二〇</span>
+        <span>北纬 39°54′ · 东经 116°23′</span>
+      </div>
+    </div>
+
+    <noscript>
+      <div class="noscript">此三维宫城需要启用 JavaScript 方可游览。</div>
+    </noscript>
+  </div>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>
