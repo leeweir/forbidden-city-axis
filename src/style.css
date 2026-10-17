@@ -1394,7 +1394,7 @@ body.is-ready .axis__item {
   }
 }
 
-@media (max-height: 720px) and (min-width: 901px) {
+@media (max-height: 780px) and (min-width: 901px) {
   .masthead {
     top: 20px;
     left: 30px;
